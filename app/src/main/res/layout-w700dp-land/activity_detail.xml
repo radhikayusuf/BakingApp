@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.radhikayusuf.bakingapp.ui.detail.DetailVM" />
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.radhikayusuf.bakingapp.ui.detail.DetailActivity">
+
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/drawerStyle"
+                    app:title="@string/app_name"
+                    app:titleTextColor="@color/colorWhite">
+
+                </android.support.v7.widget.Toolbar>
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <RelativeLayout
+                    android:id="@+id/relative_ingredient"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <fragment
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/ingredient_fragment"
+                        android:name="com.example.radhikayusuf.bakingapp.ui.fragment_ingredients.IngredientsFragment" />
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:id="@+id/relative_instruction"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent">
+
+                    <fragment
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/list_step_fragment"
+                        android:name="com.example.radhikayusuf.bakingapp.ui.fragment_detail.ListStepFragment"/>
+                </FrameLayout>
+
+                <fragment
+                    android:layout_width="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:id="@+id/instruction_fragment"
+                    android:name="com.example.radhikayusuf.bakingapp.ui.fragment_step_instuction.InstructionsFragment"/>
+
+
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:paddingLeft="20dp"
+            app:menu="@menu/main_menu" />
+
+        <!--app:headerLayout="@layout/nav_header_main"-->
+        <!--app:itemBackground="@drawable/menu_background_color"-->
+        <!--app:itemIconTint="@color/menu_text_color1"-->
+        <!--app:itemTextAppearance="@style/Test"-->
+        <!--app:itemTextColor="@color/menu_text_color"-->
+    </android.support.v4.widget.DrawerLayout>
+</layout>

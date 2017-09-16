@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.radhikayusuf.bakingapp.ui.configure_widget.ChooseRecipeRowVM" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_180dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{vm.image_url}"
+                tools:src="@drawable/nuttela_pie" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:paddingBottom="@dimen/dimens_16dp"
+                    android:paddingLeft="@dimen/dimens_16dp"
+                    android:paddingRight="@dimen/dimens_16dp"
+                    android:paddingTop="@dimen/dimens_16dp"
+                    android:text="@{vm.recipe_name}"
+                    tools:text="@string/dummy_recipe_title"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dimens_8dp"
+                    android:paddingLeft="@dimen/dimens_16dp"
+                    android:paddingRight="@dimen/dimens_16dp"
+                    android:paddingTop="@dimen/dimens_24dp"
+                    android:text="@{vm.ingredient_count}"
+                    tools:text="@string/ingredients_count" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dimens_8dp"
+                    android:paddingLeft="@dimen/dimens_16dp"
+                    android:paddingRight="@dimen/dimens_16dp"
+                    android:paddingTop="@dimen/dimens_8dp"
+                    android:text="@{vm.steps_count}"
+                    tools:text="@string/steps_count" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/dimens_16dp"
+                    android:paddingLeft="@dimen/dimens_16dp"
+                    android:paddingRight="@dimen/dimens_16dp"
+                    android:paddingTop="@dimen/dimens_8dp"
+                    android:text="@{vm.serving}"
+                    tools:text="@string/serving_count" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Baking</string>
+
+
+    <string name="dummy_recipe_title">Nutella Pie</string>
+    <string name="ingredients_count">Ingredients : %s items</string>
+    <string name="steps_count">Steps : %s items</string>
+    <string name="serving_count">Serving : %s items</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="key_data_main">KEY_DATA_MAIN</string>
+    <string name="recipe_intent">data-0</string>
+    <string name="ingredients_intent">data-1</string>
+    <string name="steps_intent">data-2</string>
+    <string name="video_position_intent">vid_pos_intent</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="long_text">Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet Lorem ipsum sit amet </string>
+    <string name="view_ingredients">View Ingredients</string>
+    <string name="intent_video_url">VID_URL</string>
+    <string name="intent_window_index">WINDOW_INDEX</string>
+    <string name="intent_state">STATE</string>
+    <string name="choose_recipe">Choose Recipe</string>
+    <string name="pref_data_widget">DATA_RESULT_CHOOSER</string>
+    <string name="action_from_wdiget">ACTION_FROM_WIDGET</string>
+    <string name="empty_ingredient_list">Ingredient information not available</string>
+    <string name="widget_cd">Baking App Widget</string>
+</resources>

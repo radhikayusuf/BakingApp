@@ -1,0 +1,26 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.radhikayusuf.bakingapp.ui.fragment_ingredients.IngredientsVM"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.radhikayusuf.bakingapp.ui.fragment_ingredients.IngredientsFragment">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="@{vm.layoutManager}"
+            app:adapter="@{vm.adapter}">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </FrameLayout>
+</layout>
