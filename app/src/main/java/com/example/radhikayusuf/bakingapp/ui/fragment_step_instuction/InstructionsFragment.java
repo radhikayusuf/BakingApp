@@ -43,6 +43,10 @@ public class InstructionsFragment extends BaseFragment<FragmentInstructionsBindi
         getVm().setPosition(position);
     }
 
+    public int getIndexStep(){
+        return getVm().getPosition();
+    }
+
 
     @Override
     public void onStart() {

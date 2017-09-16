@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
+import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 
@@ -18,6 +19,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.List;
+
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
 /**
  * @author radhikayusuf.
@@ -74,5 +77,9 @@ public class Utils {
     public static String getString(Context context, String key){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getString(key, "");
+    }
+
+    public static boolean isPotrait(Activity activity){
+        return (activity.getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT);
     }
 }

@@ -89,6 +89,12 @@
             android:paddingLeft="20dp"
             app:menu="@menu/main_menu" />
 
+        <View
+            android:id="@+id/identifier_layout_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
         <!--app:headerLayout="@layout/nav_header_main"-->
         <!--app:itemBackground="@drawable/menu_background_color"-->
         <!--app:itemIconTint="@color/menu_text_color1"-->

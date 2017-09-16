@@ -33,8 +33,7 @@
         <activity
             android:name=".ui.fullscreen_player.FullScreenPlayerActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.detail.DetailActivity"
-            android:screenOrientation="userLandscape" />
+            android:parentActivityName=".ui.detail.DetailActivity" />
         <activity android:name=".ui.testing_full.TestingFullActivity" />
 
 

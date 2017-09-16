@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.radhikayusuf.bakingapp.R;
+import com.example.radhikayusuf.bakingapp.ui.main_recipe.MainActivity;
 
 /**
  * @author radhikayusuf.
@@ -52,7 +53,7 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends BaseVM>
 
         switch (id) {
             case R.id.home_menu:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                openActivity(MainActivity.class, null);
                 break;
         }
 

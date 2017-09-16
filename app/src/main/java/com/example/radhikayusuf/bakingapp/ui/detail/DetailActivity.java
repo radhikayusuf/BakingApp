@@ -1,5 +1,6 @@
 package com.example.radhikayusuf.bakingapp.ui.detail;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -59,7 +60,7 @@ public class DetailActivity extends BaseActivity<ActivityDetailBinding, DetailVM
         binding.setVm(vm);
         binding.navView.setNavigationItemSelectedListener(this);
 
-        setRequestedOrientation(!isTab ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
+        //setRequestedOrientation(!isTab ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
         return binding;
     }
 
@@ -113,12 +114,12 @@ public class DetailActivity extends BaseActivity<ActivityDetailBinding, DetailVM
 
     @Override
     public void onClickItemStep(int position) {
-        if (!isTab) {
+        if ((getBinding().identifierLayoutTab != null) && !Utils.isPotrait(this) ) {
+            fragmentInstructions.changeIndexStep(position);
+        }else{
             showFragment(fragmentInstructions, false);
             fragmentInstructions.changeIndexStep(position);
             isVideo = true;
-        }else{
-            fragmentInstructions.changeIndexStep(position);
         }
     }
 
@@ -142,5 +143,32 @@ public class DetailActivity extends BaseActivity<ActivityDetailBinding, DetailVM
     }
 
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("isTab", isTab);
+        outState.putBoolean("isVideo", isVideo);
+        outState.putBoolean("isIngredients", isIngredients);
+        outState.putInt("instructionsIndex", fragmentInstructions.getIndexStep());
+        super.onSaveInstanceState(outState);
+    }
 
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        isTab = savedInstanceState.getBoolean("isTab", false);
+        isVideo = savedInstanceState.getBoolean("isVideo", false);
+        isIngredients = savedInstanceState.getBoolean("isIngredients", false);
+
+        if(isVideo){
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.show(fragmentIngredients);
+            fragmentTransaction.show(fragmentListStep);
+            fragmentTransaction.commit();
+
+            fragmentInstructions.changeIndexStep(savedInstanceState.getInt("instructionsIndex"));
+            isVideo = false;
+        }
+
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 }
