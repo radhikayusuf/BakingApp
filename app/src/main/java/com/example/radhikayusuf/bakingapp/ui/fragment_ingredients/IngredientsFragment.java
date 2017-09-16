@@ -25,7 +25,7 @@ public class IngredientsFragment extends BaseFragment<FragmentIngredientsBinding
     }
 
     @Override
-    protected int getLayoutId() {
+    protected int getLayoutRes() {
         return R.layout.fragment_ingredients;
     }
 

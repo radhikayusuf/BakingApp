@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVM>
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
         vm = onPrepare();
         binding = onCreateVM(vm, binding);
         return binding.getRoot();
@@ -53,7 +52,7 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends BaseVM>
     protected abstract VM onPrepare();
 
     //TODO change ID
-    protected abstract int getLayoutId();
+    protected abstract int getLayoutRes();
 
     protected abstract B onCreateVM(VM vm, B binding);
 }

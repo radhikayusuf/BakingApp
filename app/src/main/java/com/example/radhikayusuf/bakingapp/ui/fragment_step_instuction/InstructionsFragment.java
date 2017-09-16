@@ -29,7 +29,7 @@ public class InstructionsFragment extends BaseFragment<FragmentInstructionsBindi
     }
 
     @Override
-    protected int getLayoutId() {
+    protected int getLayoutRes() {
         return R.layout.fragment_instructions;
     }
 

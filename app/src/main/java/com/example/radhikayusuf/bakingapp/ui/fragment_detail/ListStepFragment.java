@@ -26,7 +26,7 @@ public class ListStepFragment extends BaseFragment<FragmentListStepBinding, List
     }
 
     @Override
-    protected int getLayoutId() {
+    protected int getLayoutRes() {
         return R.layout.fragment_list_step;
     }
 
