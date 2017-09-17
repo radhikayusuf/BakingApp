@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVM> impl
     @Override
     protected MainVM onPrepare(Bundle savedInstanceState) {
 
-        return new MainVM(this, Utils.isTablet(this), savedInstanceState == null, getSupportLoaderManager()) ;
+        return new MainVM(this, Utils.isTablet(this), savedInstanceState == null, getSupportLoaderManager());
     }
 
     @Override
@@ -91,17 +91,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVM> impl
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE) {
-                    getBinding().recyclerMain.scrollToPosition(i+2);
-                }else{
-                    getBinding().recyclerMain.scrollToPosition(i);
-                }
-
+                getBinding().recyclerMain.scrollToPosition(i);
             }
         }, 200);
     }
 
-    public void setRefreshingSwipe(boolean swipe){
+    public void setRefreshingSwipe(boolean swipe) {
         getBinding().swipeMain.setRefreshing(swipe);
     }
 
@@ -109,7 +104,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVM> impl
     public void onBackPressed() {
         if (getBinding().drawerMain.isDrawerOpen(GravityCompat.START)) {
             getBinding().drawerMain.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -124,12 +119,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainVM> impl
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         Log.wtf("onNetworkConnectionChanged: ", String.valueOf(isConnected));
-        if(isConnected){
+        if (isConnected) {
             getVm().loadDataWithCheckConnection();
         }
     }
 
-    public boolean isSwipeRefreshing(){
+    public boolean isSwipeRefreshing() {
         return getBinding().swipeMain.isRefreshing();
     }
 }
