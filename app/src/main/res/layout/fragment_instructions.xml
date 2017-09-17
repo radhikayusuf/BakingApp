@@ -14,6 +14,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         tools:context="com.example.radhikayusuf.bakingapp.ui.fragment_step_instuction.InstructionsFragment">
 
         <LinearLayout
@@ -38,6 +39,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:controller_layout_id="@layout/custom_exo_player_controller"/>
+
+                <ImageView
+                    android:id="@+id/thumbnail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{vm.thumbnail_url}"
+                    android:visibility="@{vm.isShowThumbnail ? View.VISIBLE : View.GONE}"/>
 
                 <ProgressBar
                     android:layout_width="wrap_content"

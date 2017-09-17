@@ -17,7 +17,8 @@
         android:background="@color/colorWhiteSmoke"
         tools:context="com.example.radhikayusuf.bakingapp.ui.fragment_detail.ListStepFragment">
 
-        <android.support.v4.widget.NestedScrollView
+        <com.example.radhikayusuf.bakingapp.utils.MyCustomScrollView
+            android:id="@+id/scroll_listStep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -89,7 +90,7 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </com.example.radhikayusuf.bakingapp.utils.MyCustomScrollView>
 
 
     </RelativeLayout>

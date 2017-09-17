@@ -44,17 +44,13 @@
                 android:orientation="horizontal"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <RelativeLayout
-                    android:id="@+id/relative_ingredient"
-                    android:layout_width="320dp"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
-                    <fragment
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/ingredient_fragment"
-                        android:name="com.example.radhikayusuf.bakingapp.ui.fragment_ingredients.IngredientsFragment" />
-                </RelativeLayout>
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/relative_ingredient"-->
+                    <!--android:layout_width="320dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:visibility="gone">-->
+                    <!---->
+                <!--</RelativeLayout>-->
 
                 <FrameLayout
                     android:id="@+id/relative_instruction"
@@ -68,12 +64,26 @@
                         android:name="com.example.radhikayusuf.bakingapp.ui.fragment_detail.ListStepFragment"/>
                 </FrameLayout>
 
-                <fragment
-                    android:layout_width="wrap_content"
-                    android:layout_weight="3"
-                    android:layout_height="match_parent"
-                    android:id="@+id/instruction_fragment"
-                    android:name="com.example.radhikayusuf.bakingapp.ui.fragment_step_instuction.InstructionsFragment"/>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3">
+
+                    <fragment
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/instruction_fragment"
+                        android:name="com.example.radhikayusuf.bakingapp.ui.fragment_step_instuction.InstructionsFragment"/>
+
+                    <fragment
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/ingredient_fragment"
+                        android:name="com.example.radhikayusuf.bakingapp.ui.fragment_ingredients.IngredientsFragment" />
+                </RelativeLayout>
+
+
 
 
             </LinearLayout>

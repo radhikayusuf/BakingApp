@@ -5,6 +5,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +33,8 @@ import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 
+import rx.Observable;
+
 /**
  * @author radhikayusuf.
  */
@@ -39,13 +42,14 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 public class InstructionFragmentVM extends BaseVM<RecipeDao>
     implements PlayerCallback {
 
-    private final InstructionsFragment fragment;
     private int position = 0;
     private FragmentInstructionsBinding mBinding;
     public ObservableField<String> indexTitle = new ObservableField<>();
     public ObservableField<String> descStep = new ObservableField<>();
     public ObservableBoolean isVidAvaiable = new ObservableBoolean(false);
+    public ObservableBoolean isShowThumbnail = new ObservableBoolean(true);
     public ObservableBoolean isBuffering = new ObservableBoolean(true);
+    public ObservableField<String> thumbnail_url = new ObservableField<>("");
 
 
     private DefaultBandwidthMeter bandwidthMeter;
@@ -60,7 +64,7 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
         mBinding = binding;
         indexTitle.set(mData.getSteps().get(position).getShortDescription());
         descStep.set(mData.getSteps().get(position).getDescription());
-        fragment = instructionsFragment;
+        thumbnail_url.set(mData.getSteps().get(position).getThumbnailURL());
         bandwidthMeter = new DefaultBandwidthMeter();
         componentListener = new ComponentListener(this);
     }
@@ -85,6 +89,7 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
             initPlayer();
         }else{
             isVidAvaiable.set(false);
+            isShowThumbnail.set(false);
         }
     }
 
@@ -114,9 +119,8 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
                 b.putInt(mContext.getString(R.string.intent_window_index), exoPlayer.getCurrentWindowIndex());
                 b.putLong(mContext.getString(R.string.intent_state), exoPlayer.getCurrentPosition());
                 releasePlayer();
-                //getActivity().openActivity(FullScreenPlayerActivity.class, b);
                 getActivity().openActivity(TestingFullActivity.class, b);
-                ((DetailActivity)getActivity()).finish();
+                getActivity().finish();
             }
         });
 
@@ -136,7 +140,7 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
 
     public void releasePlayer(){
         if(exoPlayer != null){
-            playbackPosition = 0;
+            playbackPosition = exoPlayer.getCurrentPosition();
             currentWindow = exoPlayer.getCurrentWindowIndex();
             playWhenReady = exoPlayer.getPlayWhenReady();
 
@@ -170,6 +174,7 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
         isBuffering.set(false);
         switch (status) {
             case ExoPlayer.STATE_IDLE:
+                isShowThumbnail.set(true);
                 break;
             case ExoPlayer.STATE_ENDED:
                 break;
@@ -177,6 +182,7 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
                 isBuffering.set(true);
                 break;
             case ExoPlayer.STATE_READY:
+                isShowThumbnail.set(false);
                 break;
             default:
                 break;
@@ -187,7 +193,22 @@ public class InstructionFragmentVM extends BaseVM<RecipeDao>
         return position;
     }
 
-//    public void hideSystemUI(){
+    public SimpleExoPlayer getExoPlayer() {
+        return exoPlayer;
+    }
+
+    public long getPlaybackPosition() {
+        if (exoPlayer != null) {
+            return exoPlayer.getCurrentPosition();
+        }
+        return 0;
+    }
+
+    public void setPlaybackPosition(long playbackPosition) {
+        this.playbackPosition = playbackPosition;
+    }
+
+    //    public void hideSystemUI(){
 //
 //        mBinding.exoPlayer.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
 //            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE

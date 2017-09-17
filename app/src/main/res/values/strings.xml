@@ -27,4 +27,5 @@
     <string name="action_from_wdiget">ACTION_FROM_WIDGET</string>
     <string name="empty_ingredient_list">Ingredient information not available</string>
     <string name="widget_cd">Baking App Widget</string>
+    <string name="savedinstance_recyclerview_state">state_scroll_main</string>
 </resources>
