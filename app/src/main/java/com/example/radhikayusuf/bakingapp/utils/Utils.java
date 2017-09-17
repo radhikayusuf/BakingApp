@@ -26,7 +26,9 @@ import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
  * @author radhikayusuf.
  */
 
-public class Utils {
+public final class Utils {
+
+    private Utils() {}
 
     public static boolean isTablet(Activity act) {
         return (act.getResources().getConfiguration().screenLayout

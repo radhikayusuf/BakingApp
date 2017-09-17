@@ -49,7 +49,7 @@ public class MainVM extends BaseVM<List<RecipeDao>>
     public GridLayoutManager layoutManager;
     private final int RECIPE_LOADER_ID = 0;
     private Gson mGson;
-    List<ContentValues> contentValuesList = new ArrayList<>();
+    private List<ContentValues> contentValuesList = new ArrayList<>();
     private String TAG = MainVM.class.getName();
 
     public MainVM(Context context, boolean isTab, boolean onCreateNullinstance, LoaderManager supportLoaderManager) {
